@@ -33,13 +33,9 @@ public class HomeController {
     }
     private int response;
     private int call;
-    private int showAddPersonCount;
-    private String name;
-    private int age;
     public HomeController(){
         this.response = 0;
         this.call = 1;
-        this.showAddPersonCount = 1;
         people = new ArrayList<>();
     }
     @GetMapping("/home/increase")
@@ -63,12 +59,31 @@ public class HomeController {
         people.add(person);
         return "%d번 사람이 추가되었습니다.".formatted(person.getId());
     }
+
     @GetMapping("/home/removePerson")
     @ResponseBody
 
     public String removePerson(int id){
-        people.remove(id-1);
-        return "%d번 사람이 삭제되었습니다..".formatted(id);
+        boolean removed = people.removeIf(person -> person.getId() == id);
+        /* 스트림 사용 안하고 하는 방법
+        for ( Person p : people ) {
+             if ( p.getId() == id ) people.remove(p);
+        } */
+        if (removed == false){
+            return "%d번 사람이 존재하지 않습니다.".formatted(id);
+        }
+        return "%d번 사람이 삭제되었습니다.".formatted(id);
+    }
+    @GetMapping("/home/modifyPerson")
+    @ResponseBody
+
+    public String modifyPerson(int id, String name, int age){
+        boolean removed = people.removeIf(person -> person.getId() == id);
+        if (removed == false){
+            return "%d번 사람이 존재하지 않습니다.".formatted(id);
+        }
+        people.add(id-1,new Person(name,age));
+        return "%d번 사람이 수정되었습니다.".formatted(id);
     }
     @GetMapping("/home/people")
     @ResponseBody
