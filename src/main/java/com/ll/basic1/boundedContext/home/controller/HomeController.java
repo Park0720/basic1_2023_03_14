@@ -1,6 +1,8 @@
 package com.ll.basic1.boundedContext.home.controller;
 
 
+import com.ll.basic1.boundedContext.member.entity.Member;
+import com.ll.basic1.boundedContext.member.service.MemberService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,9 +21,11 @@ import java.util.*;
 
 @Controller
 public class HomeController {
-    private List<Person> people;
+    private final List<Person> people;
     private int response;
     private int call;
+    @Autowired
+    private MemberService memberService;
 
     public HomeController() {
         this.response = 0;
@@ -150,6 +155,11 @@ public class HomeController {
 
         // 응답 본문
         return newCountInCookie;
+    }
+    @GetMapping("/home/user1")
+    @ResponseBody
+    public Member showUser1() {
+        return memberService.findByUsername("user1");
     }
 
 }

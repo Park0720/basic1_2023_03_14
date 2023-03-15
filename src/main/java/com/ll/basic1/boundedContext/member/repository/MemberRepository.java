@@ -1,13 +1,10 @@
 package com.ll.basic1.boundedContext.member.repository;
 
 import com.ll.basic1.boundedContext.member.entity.Member;
-import com.ll.basic1.boundedContext.member.service.MemberService;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor
 public class MemberRepository {
