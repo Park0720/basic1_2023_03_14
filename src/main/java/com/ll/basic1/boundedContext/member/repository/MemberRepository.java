@@ -1,14 +1,14 @@
 package com.ll.basic1.boundedContext.member.repository;
 
 import com.ll.basic1.boundedContext.member.entity.Member;
-import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
+@Repository
 public class MemberRepository {
-    private List<Member> members;
+    private final List<Member> members;
     public MemberRepository(){
         members = new ArrayList<>();
         members.add(new Member("user1","1234"));
@@ -26,6 +26,14 @@ public class MemberRepository {
         return members
                 .stream()
                 .filter(m -> m.getUsername().equals(username))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Member findById(long id) {
+        return members
+                .stream()
+                .filter(m -> m.getId() == id)
                 .findFirst()
                 .orElse(null);
     }

@@ -84,7 +84,7 @@ public class HomeController {
         for ( Person p : people ) {
              if ( p.getId() == id ) people.remove(p);
         } */
-        if (removed == false) {
+        if (!removed) {
             return "%d번 사람이 존재하지 않습니다.".formatted(id);
         }
         return "%d번 사람이 삭제되었습니다.".formatted(id);
@@ -107,15 +107,6 @@ public class HomeController {
         found.setAge(age);
 
         return "%d번 사람이 수정되었습니다.".formatted(id);
-
-        /* 내가 만든 코드
-        boolean removed = people.removeIf(person -> person.getId() == id);
-        if (removed == false){
-            return "%d번 사람이 존재하지 않습니다.".formatted(id);
-        }
-        people.add(id-1,new Person(name,age));
-        return "%d번 사람이 수정되었습니다.".formatted(id);
-         */
     }
 
     @GetMapping("/home/people")
