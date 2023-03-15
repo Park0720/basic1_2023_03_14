@@ -1,6 +1,6 @@
 package com.ll.basic1.boundedContext.member.Controller;
 
-import com.ll.basic1.boundedContext.member.base.RsData;
+import com.ll.basic1.base.RsData;
 import com.ll.basic1.boundedContext.member.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

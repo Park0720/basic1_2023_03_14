@@ -1,4 +1,4 @@
-package com.ll.basic1.boundedContext.member.base;
+package com.ll.basic1.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
