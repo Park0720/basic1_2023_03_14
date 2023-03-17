@@ -2,7 +2,6 @@ package com.ll.basic1.boundedContext.article.controller;
 
 import com.ll.basic1.base.rsData.RsData;
 import com.ll.basic1.boundedContext.article.entity.Article;
-import com.ll.basic1.boundedContext.article.repository.ArticleRepository;
 import com.ll.basic1.boundedContext.article.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
